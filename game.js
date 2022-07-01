@@ -19,7 +19,7 @@ function filterWord (word){
         return false;
     }else if (/[.'*+?^${}()|[\]\\|0-9]|[/]/.test(word)){
         return false;
-    }else if (word.includes('-')){
+    }else if (word.includes('-') || word.includes('&')){
         return false;
     }else{
         return true;
