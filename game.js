@@ -1,6 +1,10 @@
 // Define variable
 let wordList = [];
 let canPlay = true;
+let isSetUp = false;
+let answerArr = [];
+let blankArr = [];
+let inputArr =[];
 // Get data from internet word list
 function getData() {
   return fetch(
@@ -12,9 +16,15 @@ async function main(){
     const result = await getData(); //wait for fetch to finish
     wordList = result.split("\n").filter(word => filterWord(word));
     if (canPlay == false){
-        return
+      return
+    }
+    if (isSetUp == false){ // if we haven't set up yet, get random answer and make blank array
+      setUp();
     }
     console.log(wordList);
+    console.log(answerArr);
+    console.log(blankArr);
+    
 }
 main();
 // filter out symbol, number, word.length <=2 and repeating letters
@@ -31,7 +41,13 @@ function filterWord (word){
         return false;
     }
 }
-
+//get random answer, split answer into array and fill '_' into blankArr
+function setUp(){
+  let answer = wordList[Math.floor(Math.random()*wordList.length)].toLowerCase(); 
+  answerArr = answer.split(""); //split answer into array
+  blankArr = Array(answerArr.length).fill('_');
+  isSetUp = true;
+}
 // Andy part: check user input valid?
 /*
  const userInput = "spring";
