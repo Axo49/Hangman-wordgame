@@ -1,3 +1,40 @@
+//Login page
+function Login() {
+	// validates inputs and alerts mistakes
+	const username = document.getElementsById("InputUserName").value;
+	const password = document.grtElementsById("InputPassword").value;
+	let alertMessage = "";
+	let incorrect = false;
+	
+	// username missing
+	if (username.value === "") {
+		alertMessage += "Please enter your name";
+		incorrect = true;
+	}
+	// username wrong format
+	else if (! /^[A-Za-z0-9]*$/.test(username.value)) {
+		alertMessage += "Username can only contain letters and numbers";
+		incorrect = true;
+	}
+	// password incorrect (or missing)
+	if (password.value.toLowerCase() !== "hangman") {
+		if (incorrect) {alertMessage += "\n";}
+		alertMessage += "Password incorrect";
+		incorrect = true;
+	}
+	// pops alert box
+	if (incorrect) {
+		alert(alertMessage);
+		return;
+	}
+
+	// when validation passed, redirect to game page
+	sessionStorage.clear();
+	sessionStorage.setItem("username", username.value);
+	window.location.href = game.html;
+}
+
+
 // Define variable
 let wordList = [];
 let canPlay = true;
