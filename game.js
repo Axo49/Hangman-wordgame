@@ -100,6 +100,7 @@ var lives;
 var guess;
 var counter;
 var geusses;
+var space=0;
    check = function () {
     wordlist.onclick = function () {
       var geuss = (this.innerHTML);
