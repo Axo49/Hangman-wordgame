@@ -10,18 +10,23 @@ function getData(){
 async function main(){
     const result = await getData(); //wait for fetch to finish
     wordList = result.split("\n").filter(word => filterWord(word));
+    if (canPlay == false){
+        return
+    }
     console.log(wordList);
 }
 main();
-// filter out symbol and word.length <=2
+// filter out symbol, number, word.length <=2 and repeating letters
 function filterWord (word){
     if (word.length <=2) {
         return false;
-    }else if (/[.'*+?^${}()|[\]\\|0-9]|[/]/.test(word)){
+    }else if (/[.'*+?^${}()|[\]\\|0-9]|[/]/.test(word)){ // filter out symbol and number
         return false;
-    }else if (word.includes('-') || word.includes('&')){
+    }else if (word.includes('-') || word.includes('&')){ // filter out - and & 
         return false;
-    }else{
+    }else if (/^(?!.*([ -])\1)(?!.*([A-Za-z])\2{2})\w[a-zA-Z]*$/gm.test(word)){ // filter out repeating letters
         return true;
+    }else{
+        return false;
     }
 }
