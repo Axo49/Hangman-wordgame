@@ -99,9 +99,39 @@ function checkUserInputLength() {
 }
 checkUserInputLength(); 
 */
+// Andy part: check user input valid?
+/*
+ const userInput = "spring";
+const answer = "spring";
+const LowerUserInput = userInput.toLowerCase().split("");
+const LowerAns = answer.toLowerCase().split("");
+function checkUserInput() {
+  if (userInput) {
+    console.log("match");
+  } else {
+    console.log("no");
+  }
+}
+checkUserInput();
+LowerUserInput.forEach((singleLetter) => {
+  if (isNaN(singleLetter)) {
+    console.log("match");
+  } else {
+    console.log("no");
+  }
+});
+function checkUserInputLength() {
+  if (userInput.length === answer.length) {
+    console.log("match");
+  } else {
+    console.log("no");
+  }
+}
+checkUserInputLength(); 
+*/
 
 
-//Paul Part - using for loop to check answer [conbine]
+//Paul Part - using for loop to check answer
 /*
 var lives;
 var guess;
@@ -129,3 +159,19 @@ var geusses;
     }
   }
 */
+
+//Paul part - check life and lose
+/*
+  var showLives = document.getElementById("mylives");
+   comments = function () {
+    showLives.innerHTML = "You have " + lives + " lives";
+    if (lives < 1) {
+      showLives.innerHTML = "You Lose!";
+    }
+    for (var i = 0; i < geusses.length; i++) {
+      if (counter + space === geusses.length) {
+        showLives.innerHTML = "You Win!";
+      }
+    }
+  }
+  */
