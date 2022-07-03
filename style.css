@@ -65,3 +65,50 @@ p {
   text-align: center;
 }
 /* end of the board */
+
+/* logout button*/
+.logoutbtn {
+   font-family: "Exo 2", sans-serif;	
+   text-align: center; 	
+   position: fixed;
+   bottom: 5px;
+   font-size: 20px;	
+   border-radius: 12px;	
+   border: #FFFFFF;
+   background-color: #000;
+   color: #fff;		
+}
+
+.logoutbtn:hover {
+  background-color: #cccccc;
+  color: #fff;
+}
+/* End of logout button*/
+
+/*See you next time*/
+.synt {
+  font-family: "Alfa Slab One", cursive;	
+}
+/*End of See you next time*/
+
+/*Modal-Game how to play */
+.htp {
+   font-family: "Alfa Slab One", cursive;	
+}
+
+.save {
+   font-family: "Exo 2", sans-serif;	
+/*
+   font-size: 20px;	
+   border-radius: 12px;	
+*/
+   border: #FFFFFF;
+   background-color: #000;
+   color: #fff;		
+}
+
+.save:hover {
+  background-color: #cccccc;
+  color: #fff;
+}
+/*End  Modal-Game how to play */
