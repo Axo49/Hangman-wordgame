@@ -15,6 +15,12 @@ p {
 
 /*End of all about font */
 
+/* Login Part */
+.form-popup {
+  display: none;
+}
+
+
 /*restart & guess buttons*/
 .btn1 {
   font-family: 'Alfa Slab One', cursive;		

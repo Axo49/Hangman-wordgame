@@ -29,7 +29,6 @@ async function main(){
     console.log(wordList);
     console.log(answerArr);
     console.log(blankArr);
-    
 }
 main();
 // filter out symbol, number, word.length <=2 and repeating letters
@@ -53,36 +52,6 @@ function setUp(){
   blankArr = Array(answerArr.length).fill('_');
   isSetUp = true;
 }
-// Andy part: check user input valid?
-/*
- const userInput = "spring";
-const answer = "spring";
-const LowerUserInput = userInput.toLowerCase().split("");
-const LowerAns = answer.toLowerCase().split("");
-function checkUserInput() {
-  if (userInput) {
-    console.log("match");
-  } else {
-    console.log("no");
-  }
-}
-checkUserInput();
-LowerUserInput.forEach((singleLetter) => {
-  if (isNaN(singleLetter)) {
-    console.log("match");
-  } else {
-    console.log("no");
-  }
-});
-function checkUserInputLength() {
-  if (userInput.length === answer.length) {
-    console.log("match");
-  } else {
-    console.log("no");
-  }
-}
-checkUserInputLength(); 
-*/
 // Andy part: check user input valid?
 /*
  const userInput = "spring";
@@ -255,3 +224,4 @@ var geusses;
     }
   }
 */
+
