@@ -56,7 +56,7 @@ function setUp() {
 }
 // Andy part: check user input valid?
 function checkValidValue() {
-  const userInputValue = userInput.value;
+  const userInputValue = userInput.value.trim();
   const checkValue = /^[a-zA-Z]$/;
   const LowerUserInput = userInputValue.toLowerCase().split("");
   if (userInputValue.length > answerArr.length) {
