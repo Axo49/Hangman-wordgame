@@ -4,9 +4,9 @@ let canPlay = true;
 let isSetUp = false;
 let answerArr = [];
 let blankArr = [];
-let inputArr = [];
 const output = document.querySelector(".CheckValue");
 const userInput = document.querySelector(".UserInput");
+const inputArr = userInput.value.trim().toLowerCase().split("");
 // Get data from internet word list
 function getData() {
   return fetch(
@@ -24,6 +24,21 @@ async function main() {
     // if we haven't set up yet, get random answer and make blank array
     setUp();
   }
+  const checkValue = /^[a-zA-Z]$/;
+  if (inputArr.length > answerArr.length) {
+    output.innerHTML += "<p>The word is too long.</p>";
+  } else if (inputArr.length < answerArr.length) {
+    output.innerHTML += "<p>The word is too short.</p>";
+  } else {
+    for (let i = 0; i < answerArr.length; i++) {
+      if (checkValue.test(inputArr[i]) === false) {
+        output.innerHTML += "<p>You type the non-letter.</p>";
+        break;
+      }
+    }
+  }
+  userInput.value = "";
+
   console.log(wordList);
   console.log(answerArr);
   console.log(blankArr);
@@ -55,24 +70,6 @@ function setUp() {
   isSetUp = true;
 }
 // Andy part: check user input valid?
-function checkValidValue() {
-  const userInputValue = userInput.value.trim();
-  const checkValue = /^[a-zA-Z]$/;
-  const LowerUserInput = userInputValue.toLowerCase().split("");
-  if (userInputValue.length > answerArr.length) {
-    output.innerHTML += "<p>The word is too long.</p>";
-  } else if (userInputValue.length < answerArr.length) {
-    output.innerHTML += "<p>The word is too short.</p>";
-  } else {
-    for (let i = 0; i < answerArr.length; i++) {
-      if (checkValue.test(LowerUserInput[i]) === false) {
-        output.innerHTML += "<p>You type the non-letter.</p>";
-        break;
-      }
-    }
-  }
-  userInput.value = "";
-}
 
 //Paul Part - using for loop to check answer
 /*
