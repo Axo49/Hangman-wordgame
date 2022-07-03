@@ -1,0 +1,50 @@
+@charset "UTF-8";
+/*All about font */
+/*Hello User*/
+.username {
+  font-family: 'Alfa Slab One', cursive;	
+}
+
+.hello {
+  font-family: 'Exo 2', sans-serif;
+}
+/*End of  Hello User*/
+p {
+  font-family: 'Exo 2', sans-serif;	
+}
+
+/*End of all about font */
+
+/*restart & guess buttons*/
+.btn1 {
+  font-family: 'Alfa Slab One', cursive;		
+  border-radius: 60%;
+  border: #FFFFFF;	
+}
+
+.btn1:hover {
+  background-color: #CCCCCC;
+  color: #fff;
+}
+
+.btn2 {
+  font-family: 'Alfa Slab One', cursive;		
+  border-radius:60%;
+  border: #FFFFFF;	
+}
+
+.btn2:hover {
+  background-color: #CCCCCC;
+  color: #fff;
+}
+
+/*navbar wordly*/
+.wordly {
+  font-family: ultra,serif;
+  font-weight: 400;
+  font-style: normal;
+  color: black;
+  font-size: 30px;	
+}
+/*End of navbar wordly*/
+
