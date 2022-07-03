@@ -4,9 +4,9 @@ let canPlay = true;
 let isSetUp = false;
 let answerArr = [];
 let blankArr = [];
+let inputArr;
 const output = document.querySelector(".CheckValue");
 const userInput = document.querySelector(".UserInput");
-const inputArr = userInput.value.trim().toLowerCase().split("");
 // Get data from internet word list
 function getData() {
   return fetch(
@@ -24,6 +24,7 @@ async function main() {
     // if we haven't set up yet, get random answer and make blank array
     setUp();
   }
+  inputArr = userInput.value.trim();
   const checkValue = /^[a-zA-Z]$/;
   if (inputArr.length > answerArr.length) {
     output.innerHTML += "<p>The word is too long.</p>";
@@ -38,12 +39,11 @@ async function main() {
     }
   }
   userInput.value = "";
-
+  console.log(inputArr);
   console.log(wordList);
   console.log(answerArr);
   console.log(blankArr);
 }
-main();
 // filter out symbol, number, word.length <=2 and repeating letters
 function filterWord(word) {
   if (word.length <= 2) {
