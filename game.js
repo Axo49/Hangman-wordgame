@@ -4,7 +4,9 @@ let canPlay = true;
 let isSetUp = false;
 let answerArr = [];
 let blankArr = [];
-let inputArr =[];
+let inputArr = [];
+const output = document.querySelector(".CheckValue");
+const userInput = document.querySelector(".UserInput");
 // Get data from internet word list
 function getData() {
   return fetch(
@@ -12,72 +14,65 @@ function getData() {
   ).then((response) => response.text());
 }
 // Please run *ALL* function inside main
-async function main(){
-    const result = await getData(); //wait for fetch to finish
-    wordList = result.split("\n").filter(word => filterWord(word));
-    if (canPlay == false){
-      return
-    }
-    if (isSetUp == false){ // if we haven't set up yet, get random answer and make blank array
-      setUp();
-    }
-    console.log(wordList);
-    console.log(answerArr);
-    console.log(blankArr);
+async function main() {
+  const result = await getData(); //wait for fetch to finish
+  wordList = result.split("\n").filter((word) => filterWord(word));
+  if (canPlay == false) {
+    return;
+  }
+  if (isSetUp == false) {
+    // if we haven't set up yet, get random answer and make blank array
+    setUp();
+  }
+  console.log(wordList);
+  console.log(answerArr);
+  console.log(blankArr);
 }
 main();
 // filter out symbol, number, word.length <=2 and repeating letters
-function filterWord (word){
-    if (word.length <=2) {
-        return false;
-    }else if (/[.'*+?^${}()|[\]\\|0-9]|[/]/.test(word)){ // filter out symbol and number
-        return false;
-    }else if (word.includes('-') || word.includes('&')){ // filter out - and & 
-        return false;
-    }else if (/^(?!.*([ -])\1)(?!.*([A-Za-z])\2{2})\w[a-zA-Z]*$/gm.test(word)){ // filter out repeating letters
-        return true;
-    }else{
-        return false;
-    }
+function filterWord(word) {
+  if (word.length <= 2) {
+    return false;
+  } else if (/[.'*+?^${}()|[\]\\|0-9]|[/]/.test(word)) {
+    // filter out symbol and number
+    return false;
+  } else if (word.includes("-") || word.includes("&")) {
+    // filter out - and &
+    return false;
+  } else if (/^(?!.*([ -])\1)(?!.*([A-Za-z])\2{2})\w[a-zA-Z]*$/gm.test(word)) {
+    // filter out repeating letters
+    return true;
+  } else {
+    return false;
+  }
 }
 //get random answer, split answer into array and fill '_' into blankArr
-function setUp(){
-  let answer = wordList[Math.floor(Math.random()*wordList.length)].toLowerCase(); 
+function setUp() {
+  let answer =
+    wordList[Math.floor(Math.random() * wordList.length)].toLowerCase();
   answerArr = answer.split(""); //split answer into array
-  blankArr = Array(answerArr.length).fill('_');
+  blankArr = Array(answerArr.length).fill("_");
   isSetUp = true;
 }
 // Andy part: check user input valid?
-/*
- const userInput = "spring";
-const answer = "spring";
-const LowerUserInput = userInput.toLowerCase().split("");
-const LowerAns = answer.toLowerCase().split("");
-function checkUserInput() {
-  if (userInput) {
-    console.log("match");
+function checkValidValue() {
+  const userInputValue = userInput.value;
+  const checkValue = /^[a-zA-Z]$/;
+  const LowerUserInput = userInputValue.toLowerCase().split("");
+  if (userInputValue.length > answerArr.length) {
+    output.innerHTML += "<p>The word is too long.</p>";
+  } else if (userInputValue.length < answerArr.length) {
+    output.innerHTML += "<p>The word is too short.</p>";
   } else {
-    console.log("no");
+    for (let i = 0; i < answerArr.length; i++) {
+      if (checkValue.test(LowerUserInput[i]) === false) {
+        output.innerHTML += "<p>You type the non-letter.</p>";
+        break;
+      }
+    }
   }
+  userInput.value = "";
 }
-checkUserInput();
-LowerUserInput.forEach((singleLetter) => {
-  if (isNaN(singleLetter)) {
-    console.log("match");
-  } else {
-    console.log("no");
-  }
-});
-function checkUserInputLength() {
-  if (userInput.length === answer.length) {
-    console.log("match");
-  } else {
-    console.log("no");
-  }
-}
-checkUserInputLength(); 
-*/
-
 
 //Paul Part - using for loop to check answer
 /*
@@ -124,5 +119,3 @@ var space=0;
     }
   }
   */
-
-

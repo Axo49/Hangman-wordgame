@@ -2,15 +2,15 @@
 /*All about font */
 /*Hello User*/
 .username {
-  font-family: 'Alfa Slab One', cursive;	
+  font-family: "Alfa Slab One", cursive;
 }
 
 .hello {
-  font-family: 'Exo 2', sans-serif;
+  font-family: "Exo 2", sans-serif;
 }
 /*End of  Hello User*/
 p {
-  font-family: 'Exo 2', sans-serif;	
+  font-family: "Exo 2", sans-serif;
 }
 
 /*End of all about font */
@@ -20,39 +20,44 @@ p {
   display: none;
 }
 
-
 /*restart & guess buttons*/
 .btn1 {
-  font-family: 'Alfa Slab One', cursive;
-  font-size: 20px;	
+  font-family: "Alfa Slab One", cursive;
+  font-size: 20px;
   border-radius: 60%;
-  border: #FFFFFF;	
+  border: #ffffff;
 }
 
 .btn1:hover {
-  background-color: #CCCCCC;
+  background-color: #cccccc;
   color: #fff;
 }
 
 .btn2 {
-  font-family: 'Alfa Slab One', cursive;
-  font-size: 20px;		
-  border-radius:60%;
-  border: #FFFFFF;	
+  font-family: "Alfa Slab One", cursive;
+  font-size: 20px;
+  border-radius: 60%;
+  border: #ffffff;
 }
 
 .btn2:hover {
-  background-color: #CCCCCC;
+  background-color: #cccccc;
   color: #fff;
 }
 
 /*navbar wordly*/
 .wordly {
-  font-family: ultra,serif;
+  font-family: ultra, serif;
   font-weight: 400;
   font-style: normal;
   color: black;
-  font-size: 30px;	
+  font-size: 30px;
 }
 /*End of navbar wordly*/
 
+/* the board */
+.CheckValue p {
+  margin: 15px 30px;
+  text-align: center;
+}
+/* end of the board */
