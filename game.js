@@ -31,7 +31,7 @@ function Login() {
 	// when validation passed, redirect to game page
 	sessionStorage.clear();
 	sessionStorage.setItem("username", username.value);
-	window.location.href = game.html;
+	window.location.href = "game.html";
 }
 
 
