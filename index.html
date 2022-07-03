@@ -57,7 +57,7 @@
       </div>
     </div>
 	  
-    <a class="nav-link active wordly" href="#">Wordly</a>	  
+    <p class="wordly">Wordly</p>	  
 	
 	<button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><img src="img/setting.gif" alt="/setting.gif" width="40"></button>
 
@@ -108,25 +108,31 @@
 			  </div>	
 			</div>   
 		  </div>
-		  <div class="row border-top border-bottom border-1 border-secondary">
-		    <div class="col-auto">	  
-		      <img src="img/life1.png" alt="life1.png" width="50" height="300">
-			  <img src="img/life2.png" alt="life2.png" width="50" height="300">
-			  <img src="img/life3.png" alt="life3.png" width="50" height="300">
-			  <img src="img/life4.png" alt="life4.png" width="50" height="300">
-			  <img src="img/life5.png" alt="life5.png" width="50" height="300">
-		    </div>
-			<div class="col-3">
-			  <button type="button" class="btn btn1 btn-light">Restart</button>
-			  <button type="button" class="btn btn2 btn-light">Guess</button>	
-			</div>	 
+		  <div class="row-5 p-0 border-top border-bottom border-1 border-secondary">	  
+		    <img src="img/life1.png" alt="life1.png" width="50" height="300">
+			<img src="img/life2.png" alt="life2.png" width="50" height="300">
+			<img src="img/life3.png" alt="life3.png" width="50" height="300">
+	        <img src="img/life4.png" alt="life4.png" width="50" height="300">
+			<img src="img/life5.png" alt="life5.png" width="50" height="300">
 		  </div>
+<!--			start of form           -->
+		  <form>	
 		  <div class="row-1 p-0">
-	        <div class="form-floating">
+	        <div class="form-floating p-0">
               <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea3" style="height: 100px"></textarea>
               <label for="floatingTextarea3">Word input....</label>
             </div>			  
-		  </div>	
+		  </div>
+		  <div class="row">
+		    <div class="col-6 justify-content-center text-center"> 	  
+		      <button type="button" class="btn btn1 btn-light">Restart</button>
+		    </div>
+			<div class="col-6 justify-content-center text-center"> 	  
+			  <button type="button" class="btn btn2 btn-light">Guess</button>
+		    </div>	  
+		  </div>
+	     </form>
+<!--		  End of form            -->	
 		</div>  
 	  </div>	
 	</div>

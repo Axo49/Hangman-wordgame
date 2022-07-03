@@ -17,7 +17,8 @@ p {
 
 /*restart & guess buttons*/
 .btn1 {
-  font-family: 'Alfa Slab One', cursive;		
+  font-family: 'Alfa Slab One', cursive;
+  font-size: 20px;	
   border-radius: 60%;
   border: #FFFFFF;	
 }
@@ -28,7 +29,8 @@ p {
 }
 
 .btn2 {
-  font-family: 'Alfa Slab One', cursive;		
+  font-family: 'Alfa Slab One', cursive;
+  font-size: 20px;		
   border-radius:60%;
   border: #FFFFFF;	
 }
