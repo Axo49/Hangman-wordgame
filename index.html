@@ -42,8 +42,8 @@
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLongTitle">How to play</h5>
-            <button type="button" class="btn-close" aria-label="Close">
-<!--              <span aria-hidden="true">&times;</span>-->
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+             <span aria-hidden="true">&times;</span>
             </button>
           </div>
           <div class="modal-body">
@@ -89,9 +89,7 @@
 		</div>
 		  
 		<div class="col-5 p-0 border-start border-end border-1 border-secondary">
-		  <div class="form-floating">
-            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 680px"></textarea>
-          <label for="floatingTextarea2">Word output....</label>
+		  <div class="form-floating" id="board">
           </div>	
 		</div>
 		  
@@ -111,7 +109,7 @@
 			</div>   
 		  </div>
 		  <div class="row border-top border-bottom border-1 border-secondary">
-		    <div class="col-9">	  
+		    <div class="col-auto">	  
 		      <img src="img/life1.png" alt="life1.png" width="50" height="300">
 			  <img src="img/life2.png" alt="life2.png" width="50" height="300">
 			  <img src="img/life3.png" alt="life3.png" width="50" height="300">
