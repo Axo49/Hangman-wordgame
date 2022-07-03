@@ -13,7 +13,7 @@ function Login()
 	const username = document.getElementById("UserName").value;
 	const password = document.getElementById("Password").value;
 
-if(password == "admin" && username == ([A-Za-z0-9]*$.test(username.value)))
+if(password == "admin" && username == "admin")
 {
   alert("Login succesfully");
   window.location =("game.html");
