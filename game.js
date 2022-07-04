@@ -69,7 +69,7 @@ function checkInput() {
   } else {
     for (let i = 0; i < answerArr.length; i++) {
       if (checkValue.test(testInput[i]) === false) {
-        output.innerHTML += "<p>Please type in ony letter.</p>";
+        output.innerHTML += "<p>Please type in only letter.</p>";
         return;
       }
     }
@@ -77,12 +77,12 @@ function checkInput() {
   inputArr = testInput;
   console.log(inputArr);
 }
-
+//Check answer, if any letter(s) match, change blankArr and show the correct letter(s)
 function checkAnswer() {
-  for (let i = 0; i < inputArr.length; i++) {
-    for (let j = 0; j < answerArr.length; j++) {
-      if (inputArr[i] === answerArr[j]) {
-        blankArr[j] = answerArr[j];
+  for (let i = 0; i < answerArr.length; i++) {
+    for (let j = 0; j < inputArr.length; j++) {
+      if (inputArr[j] === answerArr[i]) {
+        blankArr[i] = answerArr[i];
       }
     }
   }
