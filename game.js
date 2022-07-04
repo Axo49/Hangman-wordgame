@@ -28,9 +28,10 @@ async function main() {
     console.log(blankArr);
   }
   checkInput();
-  
-  
+  checkAnswer();
+  console.log(blankArr);
 }
+main();
 // filter out symbol, number, word.length <=2 and repeating letters
 function filterWord(word) {
   if (word.length <= 2) {
@@ -79,6 +80,15 @@ function checkInput(){
   console.log(inputArr);
 }
 
+function checkAnswer(){
+  inputArr.forEach(function (value, index){
+    if(value === answerArr[index]){
+        blankArr[index] = value;
+    } else {
+    }
+});
+  
+}
 //Paul Part - using for loop to check answer
 /*
 var lives;
