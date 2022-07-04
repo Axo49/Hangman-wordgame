@@ -29,9 +29,7 @@ async function main() {
   }
   checkInput();
   checkAnswer();
-  console.log(blankArr);
 }
-main();
 // filter out symbol, number, word.length <=2 and repeating letters
 function filterWord(word) {
   if (word.length <= 2) {
@@ -52,30 +50,31 @@ function filterWord(word) {
 //get random answer, split answer into array and fill '_' into blankArr
 function setUp() {
   let answer =
-    wordList[Math.floor(Math.random() * wordList.length)].toLowerCase();
+  wordList[Math.floor(Math.random() * wordList.length)].toLowerCase();
   answerArr = answer.split(""); //split answer into array
   blankArr = Array(answerArr.length).fill("_");
   isSetUp = true;
 }
 // Andy part: check user input valid?
 function checkInput() {
-  inputArr = userInput.value.trim().split("");
+  testInput = userInput.value.trim().split("");
   userInput.value = "";
   const checkValue = /^[a-zA-Z]$/;
-  if (inputArr.length > answerArr.length) {
-    output.innerHTML += "<p>The word is too long.</p>";
+  if (testInput.length > answerArr.length) {
+    output.innerHTML += "<p>The word you guess is too long.</p>";
     return;
-  } else if (inputArr.length < answerArr.length) {
-    output.innerHTML += "<p>The word is too short.</p>";
+  } else if (testInput.length < answerArr.length) {
+    output.innerHTML += "<p>The word you guess is too short.</p>";
     return;
   } else {
     for (let i = 0; i < answerArr.length; i++) {
-      if (checkValue.test(inputArr[i]) === false) {
-        output.innerHTML += "<p>You type the non-letter.</p>";
+      if (checkValue.test(testInput[i]) === false) {
+        output.innerHTML += "<p>Please type in ony letter.</p>";
         return;
       }
     }
   }
+  inputArr = testInput;
   console.log(inputArr);
 }
 
@@ -87,6 +86,7 @@ function checkAnswer() {
       }
     }
   }
+  console.log(blankArr);
 }
 //Paul Part - using for loop to check answer
 /*
