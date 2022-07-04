@@ -58,36 +58,35 @@ function setUp() {
   isSetUp = true;
 }
 // Andy part: check user input valid?
-function checkInput(){
+function checkInput() {
   inputArr = userInput.value.trim().split("");
   userInput.value = "";
   const checkValue = /^[a-zA-Z]$/;
   if (inputArr.length > answerArr.length) {
     output.innerHTML += "<p>The word is too long.</p>";
-    return
+    return;
   } else if (inputArr.length < answerArr.length) {
     output.innerHTML += "<p>The word is too short.</p>";
-    return
+    return;
   } else {
     for (let i = 0; i < answerArr.length; i++) {
       if (checkValue.test(inputArr[i]) === false) {
         output.innerHTML += "<p>You type the non-letter.</p>";
         return;
-        
       }
     }
   }
   console.log(inputArr);
 }
 
-function checkAnswer(){
-  inputArr.forEach(function (value, index){
-    if(value === answerArr[index]){
-        blankArr[index] = value;
-    } else {
+function checkAnswer() {
+  for (let i = 0; i < inputArr.length; i++) {
+    for (let j = 0; j < answerArr.length; j++) {
+      if (inputArr[i] === answerArr[j]) {
+        blankArr[j] = answerArr[j];
+      }
     }
-});
-  
+  }
 }
 //Paul Part - using for loop to check answer
 /*
