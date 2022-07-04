@@ -4,7 +4,7 @@ let canPlay = true;
 let isSetUp = false;
 let answerArr = [];
 let blankArr = [];
-let inputArr;
+let inputArr = [];
 const output = document.querySelector(".CheckValue");
 const userInput = document.querySelector(".UserInput");
 // Get data from internet word list
@@ -23,26 +23,13 @@ async function main() {
   if (isSetUp == false) {
     // if we haven't set up yet, get random answer and make blank array
     setUp();
+    console.log(wordList);
+    console.log(answerArr);
+    console.log(blankArr);
   }
-  inputArr = userInput.value.trim();
-  const checkValue = /^[a-zA-Z]$/;
-  if (inputArr.length > answerArr.length) {
-    output.innerHTML += "<p>The word is too long.</p>";
-  } else if (inputArr.length < answerArr.length) {
-    output.innerHTML += "<p>The word is too short.</p>";
-  } else {
-    for (let i = 0; i < answerArr.length; i++) {
-      if (checkValue.test(inputArr[i]) === false) {
-        output.innerHTML += "<p>You type the non-letter.</p>";
-        break;
-      }
-    }
-  }
-  userInput.value = "";
-  console.log(inputArr);
-  console.log(wordList);
-  console.log(answerArr);
-  console.log(blankArr);
+  checkInput();
+  
+  
 }
 // filter out symbol, number, word.length <=2 and repeating letters
 function filterWord(word) {
@@ -70,6 +57,27 @@ function setUp() {
   isSetUp = true;
 }
 // Andy part: check user input valid?
+function checkInput(){
+  inputArr = userInput.value.trim().split("");
+  userInput.value = "";
+  const checkValue = /^[a-zA-Z]$/;
+  if (inputArr.length > answerArr.length) {
+    output.innerHTML += "<p>The word is too long.</p>";
+    return
+  } else if (inputArr.length < answerArr.length) {
+    output.innerHTML += "<p>The word is too short.</p>";
+    return
+  } else {
+    for (let i = 0; i < answerArr.length; i++) {
+      if (checkValue.test(inputArr[i]) === false) {
+        output.innerHTML += "<p>You type the non-letter.</p>";
+        return;
+        
+      }
+    }
+  }
+  console.log(inputArr);
+}
 
 //Paul Part - using for loop to check answer
 /*
