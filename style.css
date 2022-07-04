@@ -112,3 +112,55 @@ p {
   color: #fff;
 }
 /*End  Modal-Game how to play */
+
+/*Hangman-loginoage index html page*/
+.wtw {
+	font-family: "Alfa Slab One", cursive;
+	color: #fff;
+	margin-top: 10px;
+}
+
+.tmeya {
+   font-family: "Exo 2", sans-serif;	
+   text-align: center;
+   margin-top: 40px;	
+   font-size: 20px;	
+   border-radius: 8px;	
+   border: #FFFFFF;
+   background-color: #fff;
+   color: #000;	
+}
+
+.yourname {
+   font-family: "Exo 2", sans-serif;
+   color: #fff;	
+}
+
+.password {
+   font-family: "Exo 2", sans-serif;
+   color: #fff;	
+}
+
+.close {
+   font-family: "Exo 2", sans-serif;
+   color: #fff;	
+}
+
+.loginbtn {
+   font-family: "Exo 2", sans-serif;	
+   font-size: 16px;	
+   border-radius: 12px;	
+   border: #FFFFFF;
+   background-color: #fff;
+   color: #000;	  	
+}
+
+.loginbtn:hover {
+  background-color: #cccccc;
+  color: #000;
+}
+
+.enterpw {
+  margin-bottom: 10px;
+}
+/*End of Hangman-loginoage index.html*/
