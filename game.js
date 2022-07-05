@@ -12,6 +12,7 @@ const output_life = document.querySelector(".life_board");
 const userInput = document.querySelector(".UserInput");
 const lifeLost = document.querySelector(".LifeLost");
 const lifeLostWord = document.querySelector(".LifeLostWord");
+const showAns = document.querySelector(".showAns");
 // Get data from internet word list
 function getData() {
   return fetch(
@@ -83,7 +84,7 @@ function checkInput() {
   }
   inputArr = testInput;
   life -= 1;
-  lifeLost.removeChild(lifeLost.lastElementChild);
+  lifeLost.removeChild(lifeLost.firstElementChild);
   lifeLostWord.innerHTML = `<p class="LifeLostWord">You have ${life} chance(s) left.</p>`;
   console.log(inputArr);
 }
@@ -100,18 +101,19 @@ function checkAnswer() {
     }
   }
   console.log(blankArr);
+  showAns.innerText = blankArr.join(" ");
 }
 
 function checkLose() {
   if (life < 1) {
-    output.innerHTML = "You Lose!";
+    output.innerHTML = "<p>You Lose!</p>";
     canPlay = false;
     return;
   }
 }
 function checkWin() {
   if (counter == answerArr.length) {
-    output.innerHTML = "You Win!";
+    output.innerHTML = "<p>You Win!</p>";
     canPlay = false;
     return;
   }
@@ -126,3 +128,6 @@ function checkWin() {
 	location.scrollTo(0, board.scrollHeight); // jump to bottom to show latest element
 }
 */
+function restart() {
+  location.reload();
+}
