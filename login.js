@@ -10,10 +10,10 @@ function openForm() {
 function Login() 
 {
 	// validates inputs and alerts mistakes
-	const username = document.getElementById("UserName").value;
+	const username = document.querySelector(".UserName1");
 	const password = document.getElementById("Password").value;
 
-if(password == "admin" && username == "admin")
+if(password == "admin" )
 {
   alert("Login succesfully");
   window.location =("game.html");
@@ -33,4 +33,10 @@ function logout()
     window.location =("index.html");
     sessionStorage.clear();
     return false;
+}
+
+function name()
+{
+  sessionStorage.getItem("username");
+  document.getElementById("welcome").innerHTML = `Welcome, ${sessionStorage.getItem("username")}!`;
 }
