@@ -31,16 +31,15 @@ async function main() {
     setUp();
     console.log(wordList);
     console.log(answerArr);
-    console.log(blankArr);
   }
   checkInput();
   checkAnswer();
-  checkWin();
+  checkWinandLose();
 }
 main();
 // filter out symbol, number, word.length <=2 and repeating letters
 function filterWord(word) {
-  if (word.length <= 2) {
+  if (word.length <= 2 || word.length >10) {
     return false;
   } else if (/[.'*+?^${}()|[\]\\|0-9]|[/]/.test(word)) {
     // filter out symbol and number
@@ -65,7 +64,7 @@ function setUp() {
 }
 // Andy part: check user input valid?
 function checkInput() {
-  testInput = userInput.value.toLowerCase().trim().split("");
+  testInput = userInput.value.toLowerCase().trim();
   userInput.value = "";
   const checkValue = /^[a-zA-Z]$/;
   if (testInput.length > answerArr.length) {
@@ -82,7 +81,8 @@ function checkInput() {
       }
     }
   }
-  inputArr = testInput;
+  inputArr = testInput.split("");
+  output.innerHTML += `<p>You guess "${testInput}".</p>`;
   life -= 1;
   lifeLost.removeChild(lifeLost.firstElementChild);
   lifeLostWord.innerHTML = `<p class="LifeLostWord">You have ${life} chance(s) left.</p>`;
@@ -94,28 +94,26 @@ function checkAnswer() {
     for (let j = 0; j < inputArr.length; j++) {
       if (inputArr[j] === answerArr[i]) {
         blankArr[i] = answerArr[i];
-        counter += 1;
-      } else {
-        checkLose();
+        }
       }
     }
-  }
   console.log(blankArr);
   showAns.innerText = blankArr.join(" ");
 }
 
-function checkLose() {
-  if (life < 1) {
-    output.innerHTML = "<p>You Lose!</p>";
+
+function checkWinandLose() {
+  if (answerArr.join('') == inputArr.join('')) {
+    output.innerHTML += "<p>You Win!</p>";
     canPlay = false;
     return;
-  }
-}
-function checkWin() {
-  if (counter == answerArr.length) {
-    output.innerHTML = "<p>You Win!</p>";
+  }else{
+    if (life < 1) {
+    output.innerHTML += "<p>You Lose!</p>";
+    output.innerHTML += `<p>The correct answer is "${answerArr.join('')}".</p>`;
     canPlay = false;
     return;
+    }
   }
 }
 
