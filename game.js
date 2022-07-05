@@ -8,6 +8,7 @@ let inputArr = [];
 let life = 5;
 let counter = 0;
 const output = document.querySelector(".CheckValue");
+const output_life = document.querySelector(".life_board");
 const userInput = document.querySelector(".UserInput");
 const lifeLost = document.querySelector(".LifeLost");
 const lifeLostWord = document.querySelector(".LifeLostWord");
@@ -35,6 +36,7 @@ async function main() {
   checkAnswer();
   checkWin();
 }
+main();
 // filter out symbol, number, word.length <=2 and repeating letters
 function filterWord(word) {
   if (word.length <= 2) {
@@ -114,3 +116,17 @@ function checkWin() {
     return;
   }
 }
+
+function genElement(
+  text,
+  messageType = "warning",
+  tag = "div",
+  location = board
+) {
+  // generates HTML elements which displays text
+ /* let newElement = document.createElement(tag);
+  newElement.innerHTML = text;
+  newElement.classList.add(messageType); // add class for styling
+  location.appendChild(newElement);
+  location.scrollTo(0, board.scrollHeight); // jump to bottom to show latest element
+}*/
