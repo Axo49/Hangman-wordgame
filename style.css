@@ -163,4 +163,15 @@ p {
 .enterpw {
   margin-bottom: 10px;
 }
+/* #board{
+	background-color: white;
+	overflow-y: scroll !important;
+	-ms-overflow-style: none;  /* IE and Edge */
+	scrollbar-width: none;  /* Firefox */
+}
+
+#board::-webkit-scrollbar {
+	display: none;  /* Chrome */
+} */
+
 /*End of Hangman-loginoage index.html*/

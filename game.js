@@ -8,7 +8,9 @@ let inputArr = [];
 let life =5;
 let counter = 0;
 const output = document.querySelector(".CheckValue");
+const output_life = document.querySelector(".life_board");
 const userInput = document.querySelector(".UserInput");
+
 // Get data from internet word list
 function getData() {
   return fetch(
@@ -33,6 +35,7 @@ async function main() {
   checkAnswer();
   checkWin();
 }
+main();
 // filter out symbol, number, word.length <=2 and repeating letters
 function filterWord(word) {
   if (word.length <= 2) {
@@ -111,3 +114,11 @@ function checkWin(){
   }
 }
 
+function genElement(text, messageType="warning", tag="div", location=board) {
+	// generates HTML elements which displays text
+	let newElement = document.createElement(tag);
+	newElement.innerHTML = text;
+	newElement.classList.add(messageType); // add class for styling
+	location.appendChild(newElement);
+	location.scrollTo(0, board.scrollHeight); // jump to bottom to show latest element
+}
