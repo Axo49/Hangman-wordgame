@@ -117,16 +117,12 @@ function checkWin() {
   }
 }
 
-function genElement(
-  text,
-  messageType = "warning",
-  tag = "div",
-  location = board
-) {
-  // generates HTML elements which displays text
- /* let newElement = document.createElement(tag);
-  newElement.innerHTML = text;
-  newElement.classList.add(messageType); // add class for styling
-  location.appendChild(newElement);
-  location.scrollTo(0, board.scrollHeight); // jump to bottom to show latest element
-}*/
+/*function genElement(text, messageType="warning", tag="div", location=board) {
+	// generates HTML elements which displays text
+	let newElement = document.createElement(tag);
+	newElement.innerHTML = text;
+	newElement.classList.add(messageType); // add class for styling
+	location.appendChild(newElement);
+	location.scrollTo(0, board.scrollHeight); // jump to bottom to show latest element
+}
+*/
