@@ -37,5 +37,5 @@ function logout()
 
 if (sessionStorage.getItem("username")) 
 {
-  document.getElementById("welcome").innerHTML =`${sessionStorage.getItem("username")}`;
+  document.getElementById("playerName").innerHTML =`${sessionStorage.getItem("username")}`;
 }
