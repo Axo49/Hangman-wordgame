@@ -6,8 +6,15 @@ let answerArr = [];
 let blankArr = [];
 let inputArr = [];
 let life = 5;
-localStorage.setItem('localWin', 0);
-localStorage.setItem('localLose', 0);
+// set local win and lose to zero after fresh log in, but not after reloads
+if (!sessionStorage.getItem('localWin')){
+  sessionStorage.setItem('localWin', 0);
+}
+if (!sessionStorage.getItem('localLose')){
+  sessionStorage.setItem('localLose', 0);
+}
+const winOutput = document.querySelector(".winOutput");
+const loseOutput = document.querySelector(".loseOutput");
 const output = document.querySelector(".CheckValue");
 const userInput = document.querySelector(".UserInput");
 const lifeLost = document.querySelector(".LifeLost");
@@ -57,10 +64,11 @@ function filterWord(word) {
 //get random answer, split answer into array and fill '_' into blankArr
 function setUp() {
   let answer =
-    wordList[Math.floor(Math.random() * wordList.length)].toLowerCase();
+  wordList[Math.floor(Math.random() * wordList.length)].toLowerCase();
   answerArr = answer.split(""); //split answer into array
   blankArr = Array(answerArr.length).fill("_");
   showAns.innerText = blankArr.join(" ");
+  updatesessionStorage();
   isSetUp = true;
 }
 // Andy part: check user input valid?
@@ -108,27 +116,28 @@ function checkAnswer() {
 function checkWinandLose() {
   if (answerArr.join('') == inputArr.join('')) {
     output.innerHTML += "<p>The answer is correct, You Win!</p>";
+    sessionStorage.localWin = parseInt(sessionStorage.getItem('localWin'))+1;
+    updatesessionStorage();
     canPlay = false;
     return;
   }else{
     if (life < 1) {
     output.innerHTML += "<p>You Lose!</p>";
     output.innerHTML += `<p>The correct answer is "${answerArr.join('')}".</p>`;
+    sessionStorage.localLose = parseInt(sessionStorage.getItem('localLose'))+1;
+    updatesessionStorage();
     canPlay = false;
     return;
     }
   }
 }
-
-/*function genElement(text, messageType="warning", tag="div", location=board) {
-	// generates HTML elements which displays text
-	let newElement = document.createElement(tag);
-	newElement.innerHTML = text;
-	newElement.classList.add(messageType); // add class for styling
-	location.appendChild(newElement);
-	location.scrollTo(0, board.scrollHeight); // jump to bottom to show latest element
+//update local number of win and lose
+function updatesessionStorage(){
+  winOutput.innerHTML = `<p>Total win: ${sessionStorage.getItem('localWin')}</p>`;
+  loseOutput.innerHTML = `<p>Total lose: ${sessionStorage.getItem('localLose')}</p>`;
 }
-*/
+
+
 function restart() {
   //clean borad
   output.replaceChildren();
@@ -181,5 +190,4 @@ function restart() {
   />`;
   setUp();
   console.log(answerArr);
-
 }
