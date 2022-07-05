@@ -5,6 +5,8 @@ let isSetUp = false;
 let answerArr = [];
 let blankArr = [];
 let inputArr = [];
+let life =5;
+let counter = 0;
 const output = document.querySelector(".CheckValue");
 const userInput = document.querySelector(".UserInput");
 // Get data from internet word list
@@ -29,6 +31,7 @@ async function main() {
   }
   checkInput();
   checkAnswer();
+  checkWin();
 }
 // filter out symbol, number, word.length <=2 and repeating letters
 function filterWord(word) {
@@ -75,6 +78,7 @@ function checkInput() {
     }
   }
   inputArr = testInput;
+  life -=1;
   console.log(inputArr);
 }
 //Check answer, if any letter(s) match, change blankArr and show the correct letter(s)
@@ -83,53 +87,27 @@ function checkAnswer() {
     for (let j = 0; j < inputArr.length; j++) {
       if (inputArr[j] === answerArr[i]) {
         blankArr[i] = answerArr[i];
+        counter += 1;
+      }else{
+        checkLose();
       }
     }
   }
   console.log(blankArr);
 }
-//Paul Part - using for loop to check answer
-/*
-var lives;
-var guess;
-var counter;
-var geusses;
-var space=0;
-   check = function () {
-    wordlist.onclick = function () {
-      var geuss = (this.innerHTML);
-      this.setAttribute("class", "active");
-      this.onclick = null;
-      for (var i = 0; i < word.length; i++) {
-        if (word[i] === geuss) {
-          geusses[i].innerHTML = geuss;
-          counter += 1;
-        } 
-      }
-      var j = (word.indexOf(geuss));
-      if (j === -1) {
-        lives -= 1;
-        comments();
-        animate();
-      } else {
-        comments();
-      }
-    }
-  }
-*/
 
-//Paul part - check life and lose
-/*
-  var showLives = document.getElementById("mylives");
-   comments = function () {
-    showLives.innerHTML = "You have " + lives + " lives";
-    if (lives < 1) {
-      showLives.innerHTML = "You Lose!";
-    }
-    for (var i = 0; i < geusses.length; i++) {
-      if (counter + space === geusses.length) {
-        showLives.innerHTML = "You Win!";
-      }
-    }
+function checkLose(){
+  if (life < 1) {
+    output.innerHTML = "You Lose!";
+    canPlay = false;
+    return;
   }
-  */
+}
+function checkWin(){
+  if (counter == answerArr.length){
+    output.innerHTML = "You Win!";
+    canPlay = false;
+    return;
+  }
+}
+
