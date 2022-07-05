@@ -106,14 +106,14 @@ function checkAnswer() {
 
 function checkLose() {
   if (life < 1) {
-    output.innerHTML = "You Lose!";
+    output.innerHTML = "<p>You Lose!</p>";
     canPlay = false;
     return;
   }
 }
 function checkWin() {
   if (counter == answerArr.length) {
-    output.innerHTML = "You Win!";
+    output.innerHTML = "<p>You Win!</p>";
     canPlay = false;
     return;
   }

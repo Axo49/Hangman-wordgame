@@ -22,12 +22,12 @@ p {
 
 /*restart & guess buttons*/
 .btn1 {
-  font-family: 'Alfa Slab One', cursive;
-  font-size: 20px;	
-  border-radius: 60%;	
-  border: #FFFFFF;
+  font-family: "Alfa Slab One", cursive;
+  font-size: 20px;
+  border-radius: 60%;
+  border: #ffffff;
   background-color: #000;
-  color: #fff;	
+  color: #fff;
 }
 
 .btn1:hover {
@@ -36,12 +36,12 @@ p {
 }
 
 .btn2 {
-  font-family: 'Alfa Slab One', cursive;
-  font-size: 20px;		
-  border-radius:60%;
-  border: #FFFFFF;
+  font-family: "Alfa Slab One", cursive;
+  font-size: 20px;
+  border-radius: 60%;
+  border: #ffffff;
   background-color: #000;
-  color: #fff;		
+  color: #fff;
 }
 
 .btn2:hover {
@@ -60,7 +60,7 @@ p {
 /*End of navbar wordly*/
 
 /* the board */
-.CheckValue p {
+.CheckValueCSS p {
   margin: 15px 30px;
   text-align: center;
 }
@@ -68,15 +68,15 @@ p {
 
 /* logout button*/
 .logoutbtn {
-   font-family: "Exo 2", sans-serif;	
-   text-align: center; 	
-   position: fixed;
-   bottom: 5px;
-   font-size: 20px;	
-   border-radius: 12px;	
-   border: #FFFFFF;
-   background-color: #000;
-   color: #fff;		
+  font-family: "Exo 2", sans-serif;
+  text-align: center;
+  position: fixed;
+  bottom: 5px;
+  font-size: 20px;
+  border-radius: 12px;
+  border: #ffffff;
+  background-color: #000;
+  color: #fff;
 }
 
 .logoutbtn:hover {
@@ -87,24 +87,24 @@ p {
 
 /*See you next time*/
 .synt {
-  font-family: "Alfa Slab One", cursive;	
+  font-family: "Alfa Slab One", cursive;
 }
 /*End of See you next time*/
 
 /*Modal-Game how to play */
 .htp {
-   font-family: "Alfa Slab One", cursive;	
+  font-family: "Alfa Slab One", cursive;
 }
 
 .save {
-   font-family: "Exo 2", sans-serif;	
-/*
+  font-family: "Exo 2", sans-serif;
+  /*
    font-size: 20px;	
    border-radius: 12px;	
 */
-   border: #FFFFFF;
-   background-color: #000;
-   color: #fff;		
+  border: #ffffff;
+  background-color: #000;
+  color: #fff;
 }
 
 .save:hover {
@@ -115,44 +115,44 @@ p {
 
 /*Hangman-loginoage index html page*/
 .wtw {
-	font-family: "Alfa Slab One", cursive;
-	color: #fff;
-	margin-top: 10px;
+  font-family: "Alfa Slab One", cursive;
+  color: #fff;
+  margin-top: 10px;
 }
 
 .tmeya {
-   font-family: "Exo 2", sans-serif;	
-   text-align: center;
-   margin-top: 40px;	
-   font-size: 20px;	
-   border-radius: 8px;	
-   border: #FFFFFF;
-   background-color: #fff;
-   color: #000;	
+  font-family: "Exo 2", sans-serif;
+  text-align: center;
+  margin-top: 40px;
+  font-size: 20px;
+  border-radius: 8px;
+  border: #ffffff;
+  background-color: #fff;
+  color: #000;
 }
 
 .yourname {
-   font-family: "Exo 2", sans-serif;
-   color: #fff;	
+  font-family: "Exo 2", sans-serif;
+  color: #fff;
 }
 
 .password {
-   font-family: "Exo 2", sans-serif;
-   color: #fff;	
+  font-family: "Exo 2", sans-serif;
+  color: #fff;
 }
 
 .close {
-   font-family: "Exo 2", sans-serif;
-   color: #fff;	
+  font-family: "Exo 2", sans-serif;
+  color: #fff;
 }
 
 .loginbtn {
-   font-family: "Exo 2", sans-serif;	
-   font-size: 16px;	
-   border-radius: 12px;	
-   border: #FFFFFF;
-   background-color: #fff;
-   color: #000;	  	
+  font-family: "Exo 2", sans-serif;
+  font-size: 16px;
+  border-radius: 12px;
+  border: #ffffff;
+  background-color: #fff;
+  color: #000;
 }
 
 .loginbtn:hover {
