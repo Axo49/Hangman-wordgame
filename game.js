@@ -5,8 +5,12 @@ let isSetUp = false;
 let answerArr = [];
 let blankArr = [];
 let inputArr = [];
+let life = 5;
+let counter = 0;
 const output = document.querySelector(".CheckValue");
 const userInput = document.querySelector(".UserInput");
+const lifeLost = document.querySelector(".LifeLost");
+const lifeLostWord = document.querySelector(".LifeLostWord");
 // Get data from internet word list
 function getData() {
   return fetch(
@@ -29,9 +33,8 @@ async function main() {
   }
   checkInput();
   checkAnswer();
-  console.log(blankArr);
+  checkWin();
 }
-main();
 // filter out symbol, number, word.length <=2 and repeating letters
 function filterWord(word) {
   if (word.length <= 2) {
@@ -59,77 +62,55 @@ function setUp() {
 }
 // Andy part: check user input valid?
 function checkInput() {
-  inputArr = userInput.value.trim().split("");
+  testInput = userInput.value.toLowerCase().trim().split("");
   userInput.value = "";
   const checkValue = /^[a-zA-Z]$/;
-  if (inputArr.length > answerArr.length) {
-    output.innerHTML += "<p>The word is too long.</p>";
+  if (testInput.length > answerArr.length) {
+    output.innerHTML += "<p>The word you guess is too long.</p>";
     return;
-  } else if (inputArr.length < answerArr.length) {
-    output.innerHTML += "<p>The word is too short.</p>";
+  } else if (testInput.length < answerArr.length) {
+    output.innerHTML += "<p>The word you guess is too short.</p>";
     return;
   } else {
     for (let i = 0; i < answerArr.length; i++) {
-      if (checkValue.test(inputArr[i]) === false) {
-        output.innerHTML += "<p>You type the non-letter.</p>";
+      if (checkValue.test(testInput[i]) === false) {
+        output.innerHTML += "<p>Please type in only letter.</p>";
         return;
       }
     }
   }
+  inputArr = testInput;
+  life -= 1;
+  lifeLost.removeChild(lifeLost.lastElementChild);
+  lifeLostWord.innerHTML = `<p class="LifeLostWord">You have ${life} chance(s) left.</p>`;
   console.log(inputArr);
 }
-
+//Check answer, if any letter(s) match, change blankArr and show the correct letter(s)
 function checkAnswer() {
-  for (let i = 0; i < inputArr.length; i++) {
-    for (let j = 0; j < answerArr.length; j++) {
-      if (inputArr[i] === answerArr[j]) {
-        blankArr[j] = answerArr[j];
+  for (let i = 0; i < answerArr.length; i++) {
+    for (let j = 0; j < inputArr.length; j++) {
+      if (inputArr[j] === answerArr[i]) {
+        blankArr[i] = answerArr[i];
+        counter += 1;
+      } else {
+        checkLose();
       }
     }
+  }
+  console.log(blankArr);
+}
+
+function checkLose() {
+  if (life < 1) {
+    output.innerHTML = "You Lose!";
+    canPlay = false;
+    return;
   }
 }
-//Paul Part - using for loop to check answer
-/*
-var lives;
-var guess;
-var counter;
-var geusses;
-var space=0;
-   check = function () {
-    wordlist.onclick = function () {
-      var geuss = (this.innerHTML);
-      this.setAttribute("class", "active");
-      this.onclick = null;
-      for (var i = 0; i < word.length; i++) {
-        if (word[i] === geuss) {
-          geusses[i].innerHTML = geuss;
-          counter += 1;
-        } 
-      }
-      var j = (word.indexOf(geuss));
-      if (j === -1) {
-        lives -= 1;
-        comments();
-        animate();
-      } else {
-        comments();
-      }
-    }
+function checkWin() {
+  if (counter == answerArr.length) {
+    output.innerHTML = "You Win!";
+    canPlay = false;
+    return;
   }
-*/
-
-//Paul part - check life and lose
-/*
-  var showLives = document.getElementById("mylives");
-   comments = function () {
-    showLives.innerHTML = "You have " + lives + " lives";
-    if (lives < 1) {
-      showLives.innerHTML = "You Lose!";
-    }
-    for (var i = 0; i < geusses.length; i++) {
-      if (counter + space === geusses.length) {
-        showLives.innerHTML = "You Win!";
-      }
-    }
-  }
-  */
+}
