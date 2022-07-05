@@ -6,9 +6,9 @@ let answerArr = [];
 let blankArr = [];
 let inputArr = [];
 let life = 5;
-let counter = 0;
+localStorage.setItem('localWin', 0);
+localStorage.setItem('localLose', 0);
 const output = document.querySelector(".CheckValue");
-const output_life = document.querySelector(".life_board");
 const userInput = document.querySelector(".UserInput");
 const lifeLost = document.querySelector(".LifeLost");
 const lifeLostWord = document.querySelector(".LifeLostWord");
@@ -60,6 +60,7 @@ function setUp() {
     wordList[Math.floor(Math.random() * wordList.length)].toLowerCase();
   answerArr = answer.split(""); //split answer into array
   blankArr = Array(answerArr.length).fill("_");
+  showAns.innerText = blankArr.join(" ");
   isSetUp = true;
 }
 // Andy part: check user input valid?
@@ -83,6 +84,7 @@ function checkInput() {
   }
   inputArr = testInput.split("");
   output.innerHTML += `<p>You guess "${testInput}".</p>`;
+  // subtract life and delete pic
   life -= 1;
   lifeLost.removeChild(lifeLost.firstElementChild);
   lifeLostWord.innerHTML = `<p class="LifeLostWord">You have ${life} chance(s) left.</p>`;
@@ -98,13 +100,14 @@ function checkAnswer() {
       }
     }
   console.log(blankArr);
+  //show answer
   showAns.innerText = blankArr.join(" ");
 }
 
-
+//check win first, or not, check lose
 function checkWinandLose() {
   if (answerArr.join('') == inputArr.join('')) {
-    output.innerHTML += "<p>You Win!</p>";
+    output.innerHTML += "<p>The answer is correct, You Win!</p>";
     canPlay = false;
     return;
   }else{
@@ -127,5 +130,56 @@ function checkWinandLose() {
 }
 */
 function restart() {
-  location.reload();
+  //clean borad
+  output.replaceChildren();
+  //clear user input
+  userInput.value = '';
+  canPlay = true;
+  answerArr.length = 0;
+  blankArr.length = 0;
+  inputArr.length = 0;
+  //reset life
+  life = 5;
+  lifeLostWord.innerHTML = `<p class="LifeLostWord">You have ${life} chance(s) left.</p>`;
+  // reset life pic
+  lifeLost.innerHTML =
+  `<img
+  src="img/life1.png"
+  alt="life1.png"
+  width="50"
+  height="300"
+  />
+  <img
+    src="img/life2.png"
+    alt="life2.png"
+    width="50"
+    height="300"
+  />
+  <img
+    src="img/life3.png"
+    alt="life3.png"
+    width="50"
+    height="300"
+  />
+  <img
+    src="img/life4.png"
+    alt="life4.png"
+    width="50"
+    height="300"
+  />
+  <img
+    src="img/life5.png"
+    alt="life5.png"
+    width="50"
+    height="300"
+  />
+  <img
+    src="img/life6.png"
+    alt="life6.png"
+    width="50"
+    height="300"
+  />`;
+  setUp();
+  console.log(answerArr);
+
 }
