@@ -35,8 +35,7 @@ function logout()
     return false;
 }
 
-function name()
+if (sessionStorage.getItem("username")) 
 {
-  sessionStorage.getItem("username");
-  document.getElementById("welcome").innerHTML = `Welcome, ${sessionStorage.getItem("username")}!`;
+  document.getElementById("welcome").innerHTML =`${sessionStorage.getItem("username")}`;
 }
