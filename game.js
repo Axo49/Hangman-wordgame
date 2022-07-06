@@ -39,7 +39,7 @@ async function main() {
 main();
 // filter out symbol, number, word.length <=2 and repeating letters
 function filterWord(word) {
-  if (word.length <= 2 || word.length >10) {
+  if (word.length <= 2 || word.length > 10) {
     return false;
   } else if (/[.'*+?^${}()|[\]\\|0-9]|[/]/.test(word)) {
     // filter out symbol and number
@@ -94,25 +94,26 @@ function checkAnswer() {
     for (let j = 0; j < inputArr.length; j++) {
       if (inputArr[j] === answerArr[i]) {
         blankArr[i] = answerArr[i];
-        }
       }
     }
+  }
   console.log(blankArr);
   showAns.innerText = blankArr.join(" ");
 }
 
-
 function checkWinandLose() {
-  if (answerArr.join('') == inputArr.join('')) {
+  if (answerArr.join("") == inputArr.join("")) {
     output.innerHTML += "<p>You Win!</p>";
     canPlay = false;
     return;
-  }else{
+  } else {
     if (life < 1) {
-    output.innerHTML += "<p>You Lose!</p>";
-    output.innerHTML += `<p>The correct answer is "${answerArr.join('')}".</p>`;
-    canPlay = false;
-    return;
+      output.innerHTML += "<p>You Lose!</p>";
+      output.innerHTML += `<p>The correct answer is "${answerArr.join(
+        ""
+      )}".</p>`;
+      canPlay = false;
+      return;
     }
   }
 }
