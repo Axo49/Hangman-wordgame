@@ -13,7 +13,7 @@ function Login()
 	const username = document.querySelector(".UserName1");
 	const password = document.getElementById("Password").value;
 
-if(password == "admin" )
+if(password == "wordly" )
 {
   alert("Login succesfully");
   window.location =("game.html");
@@ -50,13 +50,12 @@ function show_image(src, width, height, alt) {
 // }
 
 
-if (sessionStorage.getItem("username")) 
+if (sessionStorage.getItem("username") == 'Dee Gor' || sessionStorage.getItem("username") == "Andy") 
 {
   document.getElementById("playerName").innerHTML =`${sessionStorage.getItem("username")}`;
-} else if(sessionStorage.getItem("username") == 'abc')
+  document.getElementById("userpic").setAttribute("src", "img/Andy.webp");
+} else
 {
   document.getElementById("playerName").innerHTML =`${sessionStorage.getItem("username")}`;
-  // add_pic();
-  // img.src = "img/Andy.webp"
-  console.log('hello')
+
 }
