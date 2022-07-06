@@ -20,6 +20,7 @@ const userInput = document.querySelector(".UserInput");
 const lifeLost = document.querySelector(".LifeLost");
 const lifeLostWord = document.querySelector(".LifeLostWord");
 const showAns = document.querySelector(".showAns");
+const gameForm = document.querySelector(".game");
 // Get data from internet word list
 function getData() {
   return fetch(
@@ -31,7 +32,7 @@ async function main() {
   const result = await getData(); //wait for fetch to finish
   wordList = result.split("\n").filter((word) => filterWord(word));
   if (canPlay == false) {
-    return;
+    return false;
   }
   if (isSetUp == false) {
     // if we haven't set up yet, get random answer and make blank array
@@ -39,9 +40,13 @@ async function main() {
     console.log(wordList);
     console.log('answer:'+answerArr);
   }
-  checkInput();
-  checkAnswer();
-  checkWinandLose();
+  // use EventListener to track the submit event, while submit, checking input, answer and winlose
+  gameForm.addEventListener('submit', (event) => {
+    event.preventDefault(); // add this line
+    checkInput();
+    checkAnswer();
+    checkWinandLose();
+  })
 }
 main();
 // filter out symbol, number, word.length <=2 and repeating letters
@@ -78,15 +83,15 @@ function checkInput() {
   const checkValue = /^[a-zA-Z]$/;
   if (testInput.length > answerArr.length) {
     output.innerHTML += "<p>The word you guessed is too long.</p>";
-    return;
+    return false;
   } else if (testInput.length < answerArr.length) {
     output.innerHTML += "<p>The word you guessed is too short.</p>";
-    return;
+    return false;
   } else {
     for (let i = 0; i < answerArr.length; i++) {
       if (checkValue.test(testInput[i]) === false) {
         output.innerHTML += "<p>Please type in only letter.</p>";
-        return;
+        return false;
       }
     }
   }
@@ -114,12 +119,12 @@ function checkAnswer() {
 
 //check win first, or not, check lose
 function checkWinandLose() {
-  if (answerArr.join('') == blankArr.join('')) {
+  if (answerArr.join('') == inputArr.join('')) {
     output.innerHTML += "<p>The answer is correct, You Win!</p>";
     sessionStorage.localWin = parseInt(sessionStorage.getItem('localWin'))+1;
     updatesessionStorage();
     canPlay = false;
-    return;
+    return false;
   }else{
     if (life < 1) {
     output.innerHTML += "<p>You Lose!</p>";
@@ -127,7 +132,7 @@ function checkWinandLose() {
     sessionStorage.localLose = parseInt(sessionStorage.getItem('localLose'))+1;
     updatesessionStorage();
     canPlay = false;
-    return;
+    return false;
     }
   }
 }
