@@ -160,6 +160,7 @@ function restart() {
   answerArr.length = 0;
   blankArr.length = 0;
   inputArr.length = 0;
+  userInput.removeAttribute("disabled");
   //reset life
   life = 5;
   lifeLostWord.innerHTML = `<p class="LifeLostWord">You have ${life} chance(s) left.</p>`;
