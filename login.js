@@ -35,7 +35,28 @@ function logout()
     return false;
 }
 
+function show_image(src, width, height, alt) {
+  var img = document.createElement("img");
+  img.src = src;
+  img.width = width;
+  img.height = height;
+  img.alt = alt;
+  document.body.appendChild(img);
+}
+
+// function add_pic() {
+//   var src = "img/Andy.webp";
+//   show_image("img/Andy.webp", 276,110, "deeGorsDog");
+// }
+
+
 if (sessionStorage.getItem("username")) 
 {
   document.getElementById("playerName").innerHTML =`${sessionStorage.getItem("username")}`;
+} else if(sessionStorage.getItem("username") == 'abc')
+{
+  document.getElementById("playerName").innerHTML =`${sessionStorage.getItem("username")}`;
+  // add_pic();
+  // img.src = "img/Andy.webp"
+  console.log('hello')
 }
