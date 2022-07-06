@@ -31,9 +31,6 @@ function getData() {
 async function main() {
   const result = await getData(); //wait for fetch to finish
   wordList = result.split("\n").filter((word) => filterWord(word));
-  if (canPlay == false) {
-    return false;
-  }
   if (isSetUp == false) {
     // if we haven't set up yet, get random answer and make blank array
     setUp();
@@ -42,7 +39,10 @@ async function main() {
   }
   // use EventListener to track the submit event, while submit, checking input, answer and winlose
   gameForm.addEventListener('submit', (event) => {
-    event.preventDefault(); // add this line
+    event.preventDefault(); // //stop form from submitting
+    if (canPlay == false) {
+    return false;
+    }
     checkInput();
     checkAnswer();
     checkWinandLose();
