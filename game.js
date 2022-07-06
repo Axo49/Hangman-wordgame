@@ -37,7 +37,7 @@ async function main() {
     // if we haven't set up yet, get random answer and make blank array
     setUp();
     console.log(wordList);
-    console.log(answerArr);
+    console.log('answer:'+answerArr);
   }
   checkInput();
   checkAnswer();
@@ -46,7 +46,7 @@ async function main() {
 main();
 // filter out symbol, number, word.length <=2 and repeating letters
 function filterWord(word) {
-  if (word.length <= 2 || word.length >10) {
+  if (word.length <= 2 || word.length >6) {
     return false;
   } else if (/[.'*+?^${}()|[\]\\|0-9]|[/]/.test(word)) {
     // filter out symbol and number
@@ -67,7 +67,7 @@ function setUp() {
   wordList[Math.floor(Math.random() * wordList.length)].toLowerCase();
   answerArr = answer.split(""); //split answer into array
   blankArr = Array(answerArr.length).fill("_");
-  showAns.innerText = blankArr.join(" ");
+  showAns.innerText = `(${answerArr.length}) `+blankArr.join(" ");
   updatesessionStorage();
   isSetUp = true;
 }
@@ -77,10 +77,10 @@ function checkInput() {
   userInput.value = "";
   const checkValue = /^[a-zA-Z]$/;
   if (testInput.length > answerArr.length) {
-    output.innerHTML += "<p>The word you guess is too long.</p>";
+    output.innerHTML += "<p>The word you guessed is too long.</p>";
     return;
   } else if (testInput.length < answerArr.length) {
-    output.innerHTML += "<p>The word you guess is too short.</p>";
+    output.innerHTML += "<p>The word you guessed is too short.</p>";
     return;
   } else {
     for (let i = 0; i < answerArr.length; i++) {
@@ -91,12 +91,12 @@ function checkInput() {
     }
   }
   inputArr = testInput.split("");
-  output.innerHTML += `<p>You guess "${testInput}".</p>`;
+  output.innerHTML += `<p>You guessed "${testInput}".</p>`;
+  console.log('user input:'+inputArr);
   // subtract life and delete pic
   life -= 1;
   lifeLost.removeChild(lifeLost.firstElementChild);
   lifeLostWord.innerHTML = `<p class="LifeLostWord">You have ${life} chance(s) left.</p>`;
-  console.log(inputArr);
 }
 //Check answer, if any letter(s) match, change blankArr and show the correct letter(s)
 function checkAnswer() {
@@ -109,12 +109,12 @@ function checkAnswer() {
     }
   console.log(blankArr);
   //show answer
-  showAns.innerText = blankArr.join(" ");
+  showAns.innerText = `(${answerArr.length}) `+blankArr.join(" ");
 }
 
 //check win first, or not, check lose
 function checkWinandLose() {
-  if (answerArr.join('') == inputArr.join('')) {
+  if (answerArr.join('') == blankArr.join('')) {
     output.innerHTML += "<p>The answer is correct, You Win!</p>";
     sessionStorage.localWin = parseInt(sessionStorage.getItem('localWin'))+1;
     updatesessionStorage();
@@ -189,5 +189,5 @@ function restart() {
     height="300"
   />`;
   setUp();
-  console.log(answerArr);
+  console.log('answer:'+answerArr);
 }
