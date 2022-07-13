@@ -13,6 +13,7 @@ if (!sessionStorage.getItem("localWin")) {
 if (!sessionStorage.getItem("localLose")) {
   sessionStorage.setItem("localLose", 0);
 }
+//Define the positions in HTML
 const winOutput = document.querySelector(".winOutput");
 const loseOutput = document.querySelector(".loseOutput");
 const output = document.querySelector(".CheckValue");
@@ -71,7 +72,7 @@ function setUp() {
   let answer =
     wordList[Math.floor(Math.random() * wordList.length)].toLowerCase();
   answerArr = answer.split(""); //split answer into array
-  blankArr = Array(answerArr.length).fill("_");
+  blankArr = Array(answerArr.length).fill("_"); // fill "_" into blankArr as long as the length of answer
   showAns.innerText = `(${answerArr.length}) ` + blankArr.join(" ");
   updatesessionStorage();
   isSetUp = true;
@@ -83,15 +84,15 @@ function checkInput() {
   const checkValue = /^[a-zA-Z]$/;
   if (testInput.length > answerArr.length) {
     output.innerHTML += "<p>The word you guessed is too long.</p>";
-    return false;
+    return;
   } else if (testInput.length < answerArr.length) {
     output.innerHTML += "<p>The word you guessed is too short.</p>";
-    return false;
+    return;
   } else {
     for (let i = 0; i < answerArr.length; i++) {
       if (checkValue.test(testInput[i]) === false) {
         output.innerHTML += "<p>Please type in only letter.</p>";
-        return false;
+        return;
       }
     }
   }
@@ -125,7 +126,7 @@ function checkWinandLose() {
     updatesessionStorage();
     canPlay = false;
     userInput.setAttribute("disabled", "");
-    return false;
+    return;
   } else {
     if (life < 1) {
       output.innerHTML += "<p>You Lose!</p>";
@@ -137,7 +138,7 @@ function checkWinandLose() {
         parseInt(sessionStorage.getItem("localLose")) + 1;
       updatesessionStorage();
       canPlay = false;
-      return false;
+      return;
     }
   }
 }
@@ -160,6 +161,7 @@ function restart() {
   answerArr.length = 0;
   blankArr.length = 0;
   inputArr.length = 0;
+  userInput.removeAttribute("disabled");
   //reset life
   life = 5;
   lifeLostWord.innerHTML = `<p class="LifeLostWord">You have ${life} chance(s) left.</p>`;
